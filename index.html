@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>I Love You 💖</title>
   <style>
     * {
@@ -12,6 +12,7 @@
     }
 
     body {
+      background: #ffdde1;
       background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
       height: 100vh;
       overflow: hidden;
@@ -97,6 +98,19 @@
     audio {
       display: none;
     }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      #reveal-btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+      #secret-message {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -140,6 +154,11 @@ Tera pagal, sirf tera..
       flower.style.fontSize = `${1.5 + Math.random()}rem`;
       flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
       document.body.appendChild(flower);
+
+      // Remove flowers after animation ends
+      flower.addEventListener('animationend', () => {
+        flower.remove();
+      });
     }
 
     const btn = document.getElementById('reveal-btn');
@@ -155,7 +174,7 @@ Tera pagal, sirf tera..
 
   <!-- Flower bucket -->
   <div class="bucket">
-    <img src="https://pngimg.com/uploads/bouquet/bouquet_PNG51.png" alt="flower bucket"/>
+    <img src="https://pngimg.com/uploads/bouquet/bouquet_PNG51.png" alt="Flower bucket image" />
   </div>
 
   <!-- Background romantic music -->
@@ -165,5 +184,3 @@ Tera pagal, sirf tera..
 
 </body>
 </html>
-
-
