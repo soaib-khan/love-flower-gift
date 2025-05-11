@@ -12,30 +12,26 @@
     }
 
     body {
-      background: #ffdde1;
-      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+      background: linear-gradient(to bottom, #ffe6f0, #ffc2d1);
       height: 100vh;
       overflow: hidden;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       position: relative;
       text-align: center;
+      color: #000;
     }
 
     h1 {
-      color: #fff;
+      color: #000;
       font-size: 3rem;
       margin-top: 30px;
       animation: beat 1s infinite;
-      text-shadow: 2px 2px 10px red;
+      text-shadow: 2px 2px 10px #ff4e50;
     }
 
     @keyframes beat {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.2);
-      }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
 
     .flower {
@@ -80,12 +76,14 @@
 
     #reveal-btn:hover {
       background: #e0464b;
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff4e50;
     }
 
     #secret-message {
       font-size: 1.5rem;
-      color: #fff;
-      margin-top: 30px;
+      color: #000;
+      margin: 30px 20px 0;
       display: none;
       animation: fadeIn 1s ease forwards;
     }
@@ -99,6 +97,23 @@
       display: none;
     }
 
+    /* Teddy Animation */
+    .teddy {
+      position: absolute;
+      bottom: 10px;
+      left: -200px;
+      width: 120px;
+      animation: moveTeddy 12s linear infinite;
+      z-index: 10;
+    }
+
+    @keyframes moveTeddy {
+      0% { left: -200px; transform: scaleX(1); }
+      50% { left: calc(100vw + 200px); transform: scaleX(1); }
+      50.01% { transform: scaleX(-1); }
+      100% { left: -200px; transform: scaleX(-1); }
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 2rem;
@@ -110,6 +125,9 @@
       #secret-message {
         font-size: 1.2rem;
       }
+      .teddy {
+        width: 80px;
+      }
     }
   </style>
 </head>
@@ -118,32 +136,42 @@
   <h1>I LOVE YOU 💖</h1>
 
   <button id="reveal-btn">Click to Reveal a Secret 💌</button>
-  <div id="secret-message"> Jaan, pata nahi kaise samjhaun tujhe… par tu meri zindagi ka wo hissa hai jiske bina sab kuch adhoora lagta hai…
-Kabhi kabhi main apne tareeke se apni feelings dikhata hoon, shayad tujh tak waise nahi pahuch paata jaise chahiye…
-Par iska matlab yeh nahi ki main tujhe care nahi karta…
-Tera har mood, teri har baat, teri har khushi – sab mere liye matter karta hai.
-Agar kabhi tujhe aisa laga ki main careless ho gaya hoon, toh genuinely sorry hoon baby…
-Mera pyaar tere liye kabhi kam nahi ho sakta…
-Bas thoda sa pagal hoon, tujhpe hi toh!
-Tu meri zindagi ka sabse khoobsurat hissa hai… mujhe tujhse baat na karke chain nahi milta…
-Please gussa mat ho meri jaan… chal na ek pyari si smile de de mujhe abhi
-Tera cute sa face yaad aa raha hai… aur vo smile jo meri duniya roshan kar deti ho
+  <div id="secret-message">
+    Jaan, pata nahi kaise samjhaun tujhe… par tu meri zindagi ka wo hissa hai jiske bina sab kuch adhoora lagta hai…<br><br>
+    Kabhi kabhi main apne tareeke se apni feelings dikhata hoon, shayad tujh tak waise nahi pahuch paata jaise chahiye…<br><br>
+    Par iska matlab yeh nahi ki main tujhe care nahi karta…<br><br>
+    Tera har mood, teri har baat, teri har khushi – sab mere liye matter karta hai.<br><br>
+    Agar kabhi tujhe aisa laga ki main careless ho gaya hoon, toh genuinely sorry hoon baby…<br><br>
+    Mera pyaar tere liye kabhi kam nahi ho sakta…<br><br>
+    Bas thoda sa pagal hoon, tujhpe hi toh!<br><br>
+    Tu meri zindagi ka sabse khoobsurat hissa hai… mujhe tujhse baat na karke chain nahi milta…<br><br>
+    Please gussa mat ho meri jaan… chal na ek pyari si smile de de mujhe abhi 😔<br><br>
+    Tera cute sa face yaad aa raha hai… aur vo smile jo meri duniya roshan kar deti ho 💖<br><br>
+    I love you, and I always will.<br>
+    Tu meri ho… aur hamesha rahegi…<br><br>
+    Dil se sorry meri jaan… chale ab normal ho jaayein? 🥹<br><br>
+    Mwahh 💋<br>
+    Tera pagal, sirf tera..<br><br>
+    "Sorry baby" – 🥺<br>
+    "Miss you" – 💖<br>
+    "Please smile" – 😊😘<br>
+    "Meri jaan" – ❤️‍🔥👸🏻<br>
+    "Mwahhh" – 💋💌
+  </div>
 
-I love you, and I always will.
-Tu meri ho… aur hamesha rahegi…
-Dil se sorry meri jaan… chale ab normal ho jaayein?
+  <!-- Flower bucket -->
+  <div class="bucket">
+    <img src="https://pngimg.com/uploads/bouquet/bouquet_PNG51.png" alt="Flower bucket image" />
+  </div>
 
-Mwahh
-Tera pagal, sirf tera..
+  <!-- Teddy Bear Animation -->
+  <img src="https://i.postimg.cc/5y7xJjk9/teddy-bear.png" alt="Teddy Bear" class="teddy" />
 
-"Sorry baby" – 🥺
-"Miss you" – 💖
-"Please smile" – 😊😘
-"Meri jaan" – ❤️‍🔥👸🏻
-"Mwahhh" – 💋💌
-</div>
+  <!-- Romantic Background Music -->
+  <audio id="bg-music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/26/audio_114ed7639c.mp3?filename=romantic-love-story-background-music-11289.mp3" type="audio/mp3">
+  </audio>
 
-  <!-- Falling flowers -->
   <script>
     const flowers = ["🌸", "🌺", "🌹", "💐", "🌷"];
     for (let i = 0; i < 60; i++) {
@@ -155,7 +183,6 @@ Tera pagal, sirf tera..
       flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
       document.body.appendChild(flower);
 
-      // Remove flowers after animation ends
       flower.addEventListener('animationend', () => {
         flower.remove();
       });
@@ -171,16 +198,6 @@ Tera pagal, sirf tera..
       music.play();
     });
   </script>
-
-  <!-- Flower bucket -->
-  <div class="bucket">
-    <img src="https://pngimg.com/uploads/bouquet/bouquet_PNG51.png" alt="Flower bucket image" />
-  </div>
-
-  <!-- Background romantic music -->
-  <audio id="bg-music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/25/audio_2e5a205f4b.mp3?filename=romantic-piano-112194.mp3" type="audio/mp3">
-  </audio>
 
 </body>
 </html>
