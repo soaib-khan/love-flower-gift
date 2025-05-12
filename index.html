@@ -12,9 +12,9 @@
     }
 
     body {
-      background: radial-gradient(circle at top left, #1a1a2e, #16213e);
+      background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
       height: 100vh;
-      overflow: hidden;
+      overflow-y: auto;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       position: relative;
       text-align: center;
@@ -34,7 +34,7 @@
       50% { transform: scale(1.2); }
     }
 
-    .flower, .heart, .star {
+    .flower {
       position: absolute;
       top: -50px;
       font-size: 2rem;
@@ -48,18 +48,6 @@
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
       }
-    }
-
-    .bucket {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 150px;
-    }
-
-    .bucket img {
-      width: 100%;
     }
 
     #reveal-btn {
@@ -85,10 +73,14 @@
     #secret-message {
       font-size: 1.5rem;
       color: #fff;
-      margin: 30px 20px 0;
+      margin: 30px 20px;
       display: none;
       animation: fadeIn 1s ease forwards;
       z-index: 10;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
     }
 
     @keyframes fadeIn {
@@ -157,17 +149,12 @@
     "Mwahhh" – 💋💌
   </div>
 
-  <!-- Flower bucket -->
-  <div class="bucket">
-    <img src="https://pngimg.com/uploads/bouquet/bouquet_PNG51.png" alt="Flower bucket image" />
-  </div>
-
   <!-- Teddy Bear Animation -->
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjUyMzZmM2U3YmNmYzFiMTAzNDVmOTJjZjI4YTk4ZWViZmQ1MjdlYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/SqmkZ5wJLnzXW/giphy.gif" alt="Teddy Bear" class="teddy" />
+  <img src="https://media.giphy.com/media/SqmkZ5wJLnzXW/giphy.gif" alt="Teddy Bear" class="teddy" />
 
   <!-- Romantic Background Music -->
-  <audio id="bg-music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/26/audio_114ed7639c.mp3?filename=romantic-love-story-background-music-11289.mp3" type="audio/mp3">
+  <audio id="bg-music" autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/26/audio_114ed7639c.mp3" type="audio/mp3">
   </audio>
 
   <script>
@@ -190,7 +177,7 @@
     btn.addEventListener('click', () => {
       msg.style.display = 'block';
       btn.style.display = 'none';
-      music.play();
+      music.play().catch(() => {});
     });
   </script>
 
