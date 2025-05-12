@@ -12,17 +12,17 @@
     }
 
     body {
-      background: linear-gradient(to bottom, #ffe6f0, #ffc2d1);
+      background: radial-gradient(circle at top left, #1a1a2e, #16213e);
       height: 100vh;
       overflow: hidden;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       position: relative;
       text-align: center;
-      color: #000;
+      color: #fff;
     }
 
     h1 {
-      color: #000;
+      color: #fff;
       font-size: 3rem;
       margin-top: 30px;
       animation: beat 1s infinite;
@@ -34,12 +34,13 @@
       50% { transform: scale(1.2); }
     }
 
-    .flower {
+    .flower, .heart, .star {
       position: absolute;
       top: -50px;
       font-size: 2rem;
       animation: fall linear infinite;
       user-select: none;
+      z-index: 1;
     }
 
     @keyframes fall {
@@ -72,6 +73,7 @@
       cursor: pointer;
       box-shadow: 0 0 15px #ff4e50;
       transition: 0.3s ease;
+      z-index: 10;
     }
 
     #reveal-btn:hover {
@@ -82,10 +84,11 @@
 
     #secret-message {
       font-size: 1.5rem;
-      color: #000;
+      color: #fff;
       margin: 30px 20px 0;
       display: none;
       animation: fadeIn 1s ease forwards;
+      z-index: 10;
     }
 
     @keyframes fadeIn {
@@ -93,18 +96,13 @@
       to { opacity: 1; }
     }
 
-    audio {
-      display: none;
-    }
-
-    /* Teddy Animation */
     .teddy {
       position: absolute;
       bottom: 10px;
       left: -200px;
       width: 120px;
       animation: moveTeddy 12s linear infinite;
-      z-index: 10;
+      z-index: 9;
     }
 
     @keyframes moveTeddy {
@@ -165,7 +163,7 @@
   </div>
 
   <!-- Teddy Bear Animation -->
-  <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv5kt2Rqvw7lvYj8TViSGUwI54dTJmsNVW2A&s alt="Teddy Bear" class="teddy" />
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjUyMzZmM2U3YmNmYzFiMTAzNDVmOTJjZjI4YTk4ZWViZmQ1MjdlYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/SqmkZ5wJLnzXW/giphy.gif" alt="Teddy Bear" class="teddy" />
 
   <!-- Romantic Background Music -->
   <audio id="bg-music" loop>
@@ -173,19 +171,16 @@
   </audio>
 
   <script>
-    const flowers = ["🌸", "🌺", "🌹", "💐", "🌷"];
-    for (let i = 0; i < 60; i++) {
-      const flower = document.createElement("div");
-      flower.classList.add("flower");
-      flower.style.left = `${Math.random() * 100}vw`;
-      flower.style.animationDuration = `${2 + Math.random() * 3}s`;
-      flower.style.fontSize = `${1.5 + Math.random()}rem`;
-      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
-      document.body.appendChild(flower);
-
-      flower.addEventListener('animationend', () => {
-        flower.remove();
-      });
+    const elements = ["🌸", "🌺", "🌹", "💐", "🌷", "❤️", "💖", "✨", "⭐"];
+    for (let i = 0; i < 80; i++) {
+      const el = document.createElement("div");
+      el.classList.add("flower");
+      el.style.left = `${Math.random() * 100}vw`;
+      el.style.animationDuration = `${2 + Math.random() * 4}s`;
+      el.style.fontSize = `${1.5 + Math.random()}rem`;
+      el.innerText = elements[Math.floor(Math.random() * elements.length)];
+      document.body.appendChild(el);
+      el.addEventListener('animationend', () => el.remove());
     }
 
     const btn = document.getElementById('reveal-btn');
