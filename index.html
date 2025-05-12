@@ -81,6 +81,11 @@
       margin-left: auto;
       margin-right: auto;
       text-align: left;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
 
     @keyframes fadeIn {
@@ -90,18 +95,18 @@
 
     .teddy {
       position: absolute;
-      bottom: 10px;
-      left: -200px;
+      bottom: 20px;
+      left: -150px;
       width: 120px;
-      animation: moveTeddy 12s linear infinite;
-      z-index: 9;
+      animation: moveTeddy 15s linear infinite;
+      z-index: 10;
     }
 
     @keyframes moveTeddy {
-      0% { left: -200px; transform: scaleX(1); }
-      50% { left: calc(100vw + 200px); transform: scaleX(1); }
-      50.01% { transform: scaleX(-1); }
-      100% { left: -200px; transform: scaleX(-1); }
+      0% { left: -150px; transform: scaleX(1); }
+      49.99% { left: 100vw; transform: scaleX(1); }
+      50% { transform: scaleX(-1); }
+      100% { left: -150px; transform: scaleX(-1); }
     }
 
     @media (max-width: 768px) {
@@ -150,10 +155,10 @@
   </div>
 
   <!-- Teddy Bear Animation -->
-  <img src="https://media.giphy.com/media/SqmkZ5wJLnzXW/giphy.gif" alt="Teddy Bear" class="teddy" />
+  <img src="https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif" alt="Teddy Bear" class="teddy" />
 
   <!-- Romantic Background Music -->
-  <audio id="bg-music" autoplay loop>
+  <audio id="bg-music" loop>
     <source src="https://cdn.pixabay.com/audio/2022/03/26/audio_114ed7639c.mp3" type="audio/mp3">
   </audio>
 
@@ -177,7 +182,10 @@
     btn.addEventListener('click', () => {
       msg.style.display = 'block';
       btn.style.display = 'none';
-      music.play().catch(() => {});
+      msg.scrollIntoView({ behavior: 'smooth' });
+      music.play().catch(() => {
+        alert("Please tap to enable sound 🎵");
+      });
     });
   </script>
 
